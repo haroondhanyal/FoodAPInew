@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="POS_InventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Drawer">
+          <Key>
+            <PropertyRef Name="Counter_id" />
+          </Key>
+          <Property Name="Counter_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Counter_name" Type="varchar" MaxLength="100" />
+          <Property Name="limit" Type="int" />
+          <Property Name="Drawer_amount" Type="int" />
+        </EntityType>
+        <EntityType Name="DrawerAmount">
+          <Key>
+            <PropertyRef Name="d_id" />
+          </Key>
+          <Property Name="d_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Drawer_amount" Type="int" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Item_No" />
+          </Key>
+          <Property Name="Item_No" Type="bigint" Nullable="false" />
+          <Property Name="Item_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Category" Type="varchar" MaxLength="100" />
+          <Property Name="Brand" Type="varchar" MaxLength="100" />
+          <Property Name="Cost_Price" Type="int" />
+          <Property Name="Retail_Price" Type="int" />
+          <Property Name="Threshhold_Quantity" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="U_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sale_Id" Type="int" />
+          <Property Name="Sale_Date" Type="date" />
+          <Property Name="Item_No" Type="bigint" />
+          <Property Name="Item_Quantity" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Saleperson" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Salespersondetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Date" Type="varchar" MaxLength="100" />
+          <Property Name="Salesperson" Type="varchar" MaxLength="200" />
+          <Property Name="Totalsale" Type="int" />
+          <Property Name="Loginammount" Type="int" />
+          <Property Name="Logoutammount" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="varchar" MaxLength="200" />
+          <Property Name="Counter" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Stock_Detail">
+          <Key>
+            <PropertyRef Name="Sid" />
+          </Key>
+          <Property Name="Sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Itemno" Type="bigint" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Time" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="POS_InventoryModelStoreContainer">
+          <EntitySet Name="Drawer" EntityType="Self.Drawer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DrawerAmount" EntityType="Self.DrawerAmount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales_Detail" EntityType="Self.Sales_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salespersondetail" EntityType="Self.Salespersondetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock_Detail" EntityType="Self.Stock_Detail" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POS_InventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Item_No" />
+          </Key>
+          <Property Name="Item_No" Type="Int64" Nullable="false" />
+          <Property Name="Item_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Retail_Price" Type="Int32" />
+          <Property Name="Cost_Price" Type="Int32" />
+          <Property Name="Threshhold_Quantity" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="U_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Sale_Id" Type="Int32" />
+          <Property Name="Item_No" Type="Int64" />
+          <Property Name="Item_Quantity" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Saleperson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sale_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="POS_InventoryEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="Sales_Detail" EntityType="Self.Sales_Detail" />
+          <EntitySet Name="Salespersondetails" EntityType="POS_InventoryModel.Salespersondetail" />
+          <EntitySet Name="Stock_Detail" EntityType="POS_InventoryModel.Stock_Detail" />
+          <EntitySet Name="Drawers" EntityType="POS_InventoryModel.Drawer" />
+          <EntitySet Name="DrawerAmounts" EntityType="POS_InventoryModel.DrawerAmount" />
+        </EntityContainer>
+        <EntityType Name="Salespersondetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Salesperson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Totalsale" Type="Int32" />
+          <Property Name="Loginammount" Type="Int32" />
+          <Property Name="Logoutammount" Type="Int32" />
+          <Property Name="Time" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Counter" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Stock_Detail">
+          <Key>
+            <PropertyRef Name="Sid" />
+          </Key>
+          <Property Name="Sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Itemno" Type="Int64" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Time" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Drawer">
+          <Key>
+            <PropertyRef Name="Counter_id" />
+          </Key>
+          <Property Name="Counter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Counter_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="limit" Type="Int32" />
+          <Property Name="Drawer_amount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DrawerAmount">
+          <Key>
+            <PropertyRef Name="d_id" />
+          </Key>
+          <Property Name="d_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Drawer_amount" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POS_InventoryModelStoreContainer" CdmEntityContainer="POS_InventoryEntities1">
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="POS_InventoryModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Threshhold_Quantity" ColumnName="Threshhold_Quantity" />
+                <ScalarProperty Name="Cost_Price" ColumnName="Cost_Price" />
+                <ScalarProperty Name="Item_No" ColumnName="Item_No" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Retail_Price" ColumnName="Retail_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="POS_InventoryModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="U_Name" ColumnName="U_Name" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales_Detail">
+            <EntityTypeMapping TypeName="POS_InventoryModel.Sales_Detail">
+              <MappingFragment StoreEntitySet="Sales_Detail">
+                <ScalarProperty Name="Sale_Date" ColumnName="Sale_Date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Saleperson" ColumnName="Saleperson" />
+                <ScalarProperty Name="Sale_Id" ColumnName="Sale_Id" />
+                <ScalarProperty Name="Item_No" ColumnName="Item_No" />
+                <ScalarProperty Name="Item_Quantity" ColumnName="Item_Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salespersondetails">
+            <EntityTypeMapping TypeName="POS_InventoryModel.Salespersondetail">
+              <MappingFragment StoreEntitySet="Salespersondetail">
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Logoutammount" ColumnName="Logoutammount" />
+                <ScalarProperty Name="Loginammount" ColumnName="Loginammount" />
+                <ScalarProperty Name="Totalsale" ColumnName="Totalsale" />
+                <ScalarProperty Name="Salesperson" ColumnName="Salesperson" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stock_Detail">
+            <EntityTypeMapping TypeName="POS_InventoryModel.Stock_Detail">
+              <MappingFragment StoreEntitySet="Stock_Detail">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Itemno" ColumnName="Itemno" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drawers">
+            <EntityTypeMapping TypeName="POS_InventoryModel.Drawer">
+              <MappingFragment StoreEntitySet="Drawer">
+                <ScalarProperty Name="Drawer_amount" ColumnName="Drawer_amount" />
+                <ScalarProperty Name="limit" ColumnName="limit" />
+                <ScalarProperty Name="Counter_name" ColumnName="Counter_name" />
+                <ScalarProperty Name="Counter_id" ColumnName="Counter_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DrawerAmounts">
+            <EntityTypeMapping TypeName="POS_InventoryModel.DrawerAmount">
+              <MappingFragment StoreEntitySet="DrawerAmount">
+                <ScalarProperty Name="Drawer_amount" ColumnName="Drawer_amount" />
+                <ScalarProperty Name="d_id" ColumnName="d_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
